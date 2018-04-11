@@ -10,23 +10,26 @@ public class MainApp {
 //        System.out.println(Vowels.getCount("asdfghjklooO"));
 
 
-        HashMap<MyKey, String> map = new HashMap<>();
+//        HashMap<MyKey, String> map = new HashMap<>();
+//
+//        MyKey myKey = new MyKey(1);
+//        System.out.println(myKey.hashCode());
+//        map.put(myKey, "MyValue");
+//        map.put(myKey, "MyValue");
+//
+//        myKey.setI(5);
+//
+//        map.forEach((myKey1, s) -> System.out.println("Key:"+ myKey1 +",Value:"+s));
+//
+//        System.out.println(myKey.hashCode());
+//
+//        System.out.println(map.get(myKey));
+//
+//        MyKeyChild myKeyChild = new MyKeyChild(5);
+//
+//        System.out.println(myKeyChild.equals(myKey));
 
-        MyKey myKey = new MyKey(1);
-        System.out.println(myKey.hashCode());
-        map.put(myKey, "MyValue");
 
-        myKey.setI(5);
-
-        map.forEach((myKey1, s) -> System.out.println("Key:"+ myKey1 +",Value:"+s));
-
-        System.out.println(myKey.hashCode());
-
-        System.out.println(map.get(myKey));
-
-        MyKeyChild myKeyChild = new MyKeyChild(5);
-
-        System.out.println(myKeyChild.equals(myKey));
 
     }
 }
