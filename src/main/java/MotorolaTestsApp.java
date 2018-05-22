@@ -33,6 +33,7 @@ public class MotorolaTestsApp {
                 .replaceAll("t", "T");
     }
 
+    //
     static int getBeautifulArrays(int[] a, int m) {
         int result = 0;
         for (int start = 0; start < a.length; start++) {
@@ -58,6 +59,7 @@ public class MotorolaTestsApp {
         return result;
     }
 
+    //Return coincidental elements in both arrays
     static void printСoincidentals(int[] a1, int[] a2) {
         if (a1.length == 0 || a2.length == 0) {
             return;
@@ -77,6 +79,7 @@ public class MotorolaTestsApp {
         }
     }
 
+    //Implement binary search
     static boolean binarySearch(int[] a, int e) {
         if (a.length == 0) {
             return false;
