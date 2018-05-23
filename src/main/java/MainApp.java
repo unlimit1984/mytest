@@ -1,5 +1,5 @@
 import java.util.HashMap;
-import java.util.function.BiConsumer;
+import java.util.Map;
 
 /**
  * Created by Vladimir_Vysokomorny on 11-Jan-18.
@@ -29,6 +29,17 @@ public class MainApp {
 //
 //        System.out.println(myKeyChild.equals(myKey));
 
+
+        Map<String, String> map = new HashMap<>();
+        System.out.println("1: " + map.put("1", "aaa"));                        //null
+        System.out.println("2: " + map.putIfAbsent("2", "bbb"));    //null
+        System.out.println("2: " + map.putIfAbsent("2", "BBB"));               //bbb
+        System.out.println("3: " + map.computeIfAbsent("3", v -> "ccc"));   //ccc
+        System.out.println("3: " + map.computeIfAbsent("3", v -> "CCC"));   //ccc
+        System.out.println("4: " + map.computeIfPresent("4", (k, v) -> "ddd"));   //null
+        System.out.println("5: " + map.put("5", "eee"));                               //eee
+        System.out.println("5: " + map.computeIfPresent("5", (k, v) -> "EEE"));   //EEE
+        System.out.println(map);
 
 
     }
