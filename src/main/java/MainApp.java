@@ -13,7 +13,7 @@ import java.nio.file.Paths;
  * Created by Vladimir_Vysokomorny on 11-Jan-18.
  */
 public class MainApp {
-  public static void main(String[] args) throws IOException, URISyntaxException {
+  public static void main(String[] args) throws URISyntaxException {
 //        System.out.println(Kata.getMiddle("1"));
 //        System.out.println(Vowels.getCount("asdfghjklooO"));
 
@@ -70,11 +70,17 @@ public class MainApp {
 //    System.out.println("path fileName: " + p.getFileName());
 
     //GOOD
-    Path p = Paths.get(MainApp.class.getClassLoader().getResource(path).toURI());
-    File f = p.toFile();
-    InputStream is = new FileInputStream(f);
-    String content = IOUtils.toString(is);
-    System.out.println(String.format("The content of file %s: %s is: \n%s", f.getName(), f.getPath(), content));
+//    Path p = Paths.get(MainApp.class.getClassLoader().getResource(path).toURI());
+//    File f = p.toFile();
+//    InputStream is = new FileInputStream(f);
+//    String content = IOUtils.toString(is);
+//    System.out.println(String.format("The content of file %s: %s is: \n%s", f.getName(), f.getPath(), content));
+
+    //GOOD
+    URL resourceUrl = MainApp.class.getClassLoader().getResource(path);
+    File file = Paths.get(resourceUrl.toURI()).toFile();
+    System.out.println(file.getName());
+    System.out.println(file.getPath());
 
 
     //Good
@@ -101,19 +107,6 @@ public class MainApp {
 //    File file = new File();
 
 
-
-
-
-
-
   }
 
-  private static String getFileName(String cuttedPath){
-
-    return "";
-  }
-  private static String getFilePath(String cuttedPath){
-
-    return "";
-  }
 }
