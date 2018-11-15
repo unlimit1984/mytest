@@ -83,6 +83,12 @@ public class MainApp {
     System.out.println(file.getPath());
 
 
+    //Good for not existing file
+    File f = new File("deed/ść.txt");
+    System.out.println(f.getName());
+    System.out.println(f.getPath());
+
+
     //Good
 //    InputStream is = MainApp.class.getResourceAsStream(path/*"files/ąż.txt"*/);
 //    String content = IOUtils.toString(is);
