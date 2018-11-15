@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,7 +13,7 @@ import java.nio.file.Paths;
  * Created by Vladimir_Vysokomorny on 11-Jan-18.
  */
 public class MainApp {
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args) throws IOException, URISyntaxException {
 //        System.out.println(Kata.getMiddle("1"));
 //        System.out.println(Vowels.getCount("asdfghjklooO"));
 
@@ -50,10 +51,31 @@ public class MainApp {
 
     String path = "files/ąż.txt";
 
-    //Good
+    //BAD
+//    URL resourceUrl = MainApp.class.getClassLoader().getResource(path);
+//    File f = new File(resourceUrl.getFile());
+//    System.out.println("fileName: " + f.getName());
+//    System.out.println("filePath: " + f.getPath());
+
+
+    //Good in Linux/Windows, bad in docker runtime Container aem
 //    Path p = Paths.get(path);
 //    System.out.println("path parent: " + p.getParent().toString());
 //    System.out.println("path: " + p.toString());
+//    System.out.println("path fileName: " + p.getFileName());
+
+//    Path p = Paths.get(MainApp.class.getClassLoader().getResource(path).toURI());
+//    System.out.println("path parent: " + p.getParent().toString());
+//    System.out.println("path: " + p.toString());
+//    System.out.println("path fileName: " + p.getFileName());
+
+    //GOOD
+    Path p = Paths.get(MainApp.class.getClassLoader().getResource(path).toURI());
+    File f = p.toFile();
+    InputStream is = new FileInputStream(f);
+    String content = IOUtils.toString(is);
+    System.out.println(String.format("The content of file %s: %s is: \n%s", f.getName(), f.getPath(), content));
+
 
     //Good
 //    InputStream is = MainApp.class.getResourceAsStream(path/*"files/ąż.txt"*/);
@@ -74,14 +96,10 @@ public class MainApp {
 //    System.out.println(String.format("The content of file: %s is: \n%s", file.getCanonicalPath(), content));
 
     //Bad (Can't create a File object)
-//    URL url = MainApp.class.getClassLoader().getResource(path);
-//    File file = new File(url.getPath());
-//    System.out.println("url.getPath(): " + url.getPath());
-//    System.out.println("file.getPath(): " + file.getPath());
-//    System.out.println("file.getName(): " + file.getName());
-//    InputStream is = new FileInputStream(file);
-//    String content = IOUtils.toString(is);
-//    System.out.println(String.format("The content of file: %s is: \n%s", file.getCanonicalPath(), content));
+//    InputStream is = MainApp.class.getClassLoader().getResourceAsStream(path);
+//    FileInputStream fis = new FileInputStream(path);
+//    File file = new File();
+
 
 
 
