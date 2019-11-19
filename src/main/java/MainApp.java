@@ -8,7 +8,10 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Created by Vladimir_Vysokomorny on 11-Jan-18.
@@ -114,13 +117,10 @@ public class MainApp {
 //    File file = new File();
 
 
+    Set<Integer> set = new TreeSet<>(Arrays.asList(1, 2, 3, 4, 5, 1, 2, 3, 4, 5));
+    System.out.println(set);
 
 
-  }
-
-  private static int getPreviousBeforeMax(List<Integer> list){
-
-    return 0;
   }
 
 }
