@@ -8,6 +8,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 /**
  * Created by Vladimir_Vysokomorny on 11-Jan-18.
@@ -49,7 +50,7 @@ public class MainApp {
 //        System.out.println("5: " + map.computeIfPresent("5", (k, v) -> "EEE"));   //EEE
 //        System.out.println(map);
 
-    String path = "files/ąż.txt";
+//    String path = "files/ąż.txt";
 
     //BAD
 //    URL resourceUrl = MainApp.class.getClassLoader().getResource(path);
@@ -77,16 +78,16 @@ public class MainApp {
 //    System.out.println(String.format("The content of file %s: %s is: \n%s", f.getName(), f.getPath(), content));
 
     //GOOD
-    URL resourceUrl = MainApp.class.getClassLoader().getResource(path);
-    File file = Paths.get(resourceUrl.toURI()).toFile();
-    System.out.println(file.getName());
-    System.out.println(file.getPath());
+//    URL resourceUrl = MainApp.class.getClassLoader().getResource(path);
+//    File file = Paths.get(resourceUrl.toURI()).toFile();
+//    System.out.println(file.getName());
+//    System.out.println(file.getPath());
 
 
     //Good for not existing file
-    File f = new File("deed/ść.txt");
-    System.out.println(f.getName());
-    System.out.println(f.getPath());
+//    File f = new File("deed/ść.txt");
+//    System.out.println(f.getName());
+//    System.out.println(f.getPath());
 
 
     //Good
@@ -113,6 +114,13 @@ public class MainApp {
 //    File file = new File();
 
 
+
+
+  }
+
+  private static int getPreviousBeforeMax(List<Integer> list){
+
+    return 0;
   }
 
 }
