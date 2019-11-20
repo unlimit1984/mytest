@@ -1,47 +1,53 @@
-import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.stream.Collectors;
 
 public class GetPreviousBeforeMax {
 
   public static int getPreviousBeforeMax(List<Integer> list) {
-    Set<Integer> set = new TreeSet<>(list);
-    List<Integer> reversedList = set.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+    //1st solution
+//    Set<Integer> set = new TreeSet<>(list);
+//    List<Integer> reversedList = set.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+//
+//    if (reversedList.size() == 0) {
+//      throw new RuntimeException();
+//    } else if (reversedList.size() == 1) {
+//      return reversedList.get(0);
+//    } else {
+//      return reversedList.get(1);
+//    }
+    /////////////////////////
 
-    if (reversedList.size() == 0) {
-      throw new RuntimeException();
-    } else if (reversedList.size() == 1) {
-      return reversedList.get(0);
-    } else {
-      return reversedList.get(1);
+//Good 2nd solution
+    boolean isMaxExist = false, isBeforeMaxExist = false;
+    int max = 0, beforeMax = 0;
+
+    for (int i = 0; i < list.size(); i++) {
+      if (i == 0) {
+        max = list.get(i);
+        isMaxExist = true;
+      } else if (list.get(i) > max) {
+        if (!isBeforeMaxExist) {//еще не найдено предпоследнее число
+          beforeMax = max;
+          isBeforeMaxExist = true;
+          max = list.get(i);
+        } else { //найдено предпоследнее число
+          beforeMax = max;
+          max = list.get(i);
+        }
+      } else if (isBeforeMaxExist && list.get(i) > beforeMax) {
+        beforeMax = list.get(i);
+      } else if (!isBeforeMaxExist && list.get(i) != max) {
+        beforeMax = list.get(i);
+        isBeforeMaxExist = true;
+      }
     }
 
-
-//    int max;
-//    int beforeMax;
-//
-//    if (list.size() == 0) {
-//      return 0;
-//    } else if (list.size() == 1) {
-//      return list.get(0);
-//    } else if (list.size() == 2) {
-//      return Math.min(list.get(0), list.get(1));
-//    } else {
-//      max = beforeMax = list.get(0);
-//      Collections.sort(list);
-//      Collections.reverse(list);
-//
-//      for (int e : list) {
-//        if (e > max) {
-//          if()
-//          beforeMax = max;
-//          max = e;
-//        }
-//      }
-//      return beforeMax;
-//    return 0;
+    if (isBeforeMaxExist) {
+      return beforeMax;
+    } else if (isMaxExist) {
+      return max;
+    } else {
+      throw new RuntimeException();
+    }
   }
 }
 
