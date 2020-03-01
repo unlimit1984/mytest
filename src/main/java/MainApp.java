@@ -108,8 +108,24 @@ public class MainApp {
 //    File file = new File();
 
 
-    Set<Integer> set = new TreeSet<>(Arrays.asList(1, 2, 3, 4, 5, 1, 2, 3, 4, 5));
-    System.out.println(set);
+//    Set<Integer> set = new TreeSet<>(Arrays.asList(1, 2, 3, 4, 5, 1, 2, 3, 4, 5));
+//    System.out.println(set);
+
+//    List<String> list = null;
+//    for (String s : list) {
+//      System.out.println(s);
+//
+//    }
+
+    StackTraceElement[] stackTraceElements = Thread.getAllStackTraces().get(Thread.currentThread());
+    //stackTraceElements.length
+    for (int i = 0; i <= 100; i++) {
+      StackTraceElement element = stackTraceElements[i];
+      System.out.println(String.format("%s.%s line %s", element.getClassName(), element.getMethodName(), element.getLineNumber()));
+    }
+    if(stackTraceElements.length > 100) {
+      System.out.println("and more...");
+    }
 
 
   }
