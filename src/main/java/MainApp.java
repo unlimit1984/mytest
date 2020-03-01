@@ -1,15 +1,6 @@
-import org.apache.commons.io.IOUtils;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -123,4 +114,34 @@ public class MainApp {
 
   }
 
+  //arr = [1,2,3,4,5,6,7,8,9,10] sum = 8
+  private static boolean hasPairWithSumForSortedArray(int[] arr, int sum) {
+    int min = 0;
+    int max = arr.length - 1;
+    while (min < max) {
+      int s = arr[min] + arr[max];
+      if (s == sum) {
+        return true;
+      } else if (s < sum) {
+        min++;
+      } else {
+        max--;
+      }
+    }
+    return false;
+  }
+
+  // arr = [5,1,4,4,2,8,6,4,7,5,6,6,3,2,9] sum = 8
+  private static boolean hasPairWithSumForUnsortedArray(int[] arr, int sum) {
+    Set<Integer> oldValues = new HashSet<>();
+    for (int value : arr) {
+      if (oldValues.contains(sum - value)) {
+        return true;
+      } else {
+        oldValues.add(value);
+      }
+    }
+    return false;
+  }
 }
+
