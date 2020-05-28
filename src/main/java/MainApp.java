@@ -1,6 +1,8 @@
 import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -117,16 +119,19 @@ public class MainApp {
 //
 //    }
 
-    StackTraceElement[] stackTraceElements = Thread.getAllStackTraces().get(Thread.currentThread());
-    //stackTraceElements.length
-    for (int i = 0; i <= 100; i++) {
-      StackTraceElement element = stackTraceElements[i];
-      System.out.println(String.format("%s.%s line %s", element.getClassName(), element.getMethodName(), element.getLineNumber()));
-    }
-    if(stackTraceElements.length > 100) {
-      System.out.println("and more...");
-    }
+//    StackTraceElement[] stackTraceElements = Thread.getAllStackTraces().get(Thread.currentThread());
+//    //stackTraceElements.length
+//    for (int i = 0; i <= 100; i++) {
+//      StackTraceElement element = stackTraceElements[i];
+//      System.out.println(String.format("%s.%s line %s", element.getClassName(), element.getMethodName(), element.getLineNumber()));
+//    }
+//    if(stackTraceElements.length > 100) {
+//      System.out.println("and more...");
+//    }
 
+
+    Object o = Optional.ofNullable(null);
+    System.out.println(Objects.isNull(o));
 
   }
 
