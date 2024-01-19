@@ -144,51 +144,191 @@ public class MainApp {
 //        String externalId = Optional.ofNullable(systemName).orElse(email);
 //        System.out.println(externalId);
 
+//--------------------------
+//        List<String> arr = Arrays.asList("ab", "cd", "ef");
+//        List<String> arr2 = new ArrayList<>();
+//        List<String> arr3 = null;
+//
+//        System.out.println(CollectionUtils.isEmpty(arr));
+//        System.out.println(CollectionUtils.isEmpty(arr2));
+//        System.out.println(CollectionUtils.isEmpty(arr3));
+//
+//        System.out.println(CollectionUtils.isNotEmpty(arr));
+//        System.out.println(CollectionUtils.isNotEmpty(arr2));
+//        System.out.println(CollectionUtils.isNotEmpty(arr3));
+//--------------------------
 
-        List<String> arr = Arrays.asList("ab", "cd", "ef");
-        List<String> arr2 = new ArrayList<>();
-        List<String> arr3 = null;
+//        System.out.println(123);
+//        int result = romanToInt("XXX");
+//
+//        System.out.println(result);
+//--------------------------
+//        int x = -6;
+//        System.out.println(Integer.toBinaryString(x));
+//        x = 6;
+//        System.out.println(Integer.toBinaryString(x));
+//
+//        String max = Integer.toBinaryString(Integer.MAX_VALUE);
+//        System.out.println(max + ",   MAX:" + Integer.MAX_VALUE);
+//        System.out.println(max.length());
+//
+//        String min = Integer.toBinaryString(Integer.MIN_VALUE+1);
+//        System.out.println(min + ",   MIN:" + Integer.MIN_VALUE);
+//        System.out.println(min.length());
+//
+//        int val = -7;
+//        String val_str = Integer.toBinaryString(val);
+//        System.out.println(val_str + ",   VAL:" + val);
+//        System.out.println(min.length());
+//
+//        val = 123;
+//        val_str = Integer.toBinaryString(val);
+//        System.out.println(val_str + ",   VAL:" + val);
+//        System.out.println(min.length());
+//
+//        val = 321;
+//        val_str = Integer.toBinaryString(val);
+//        System.out.println(val_str + ",   VAL:" + val);
+//        System.out.println(min.length());
+//--------------------------
 
-        System.out.println(CollectionUtils.isEmpty(arr));
-        System.out.println(CollectionUtils.isEmpty(arr2));
-        System.out.println(CollectionUtils.isEmpty(arr3));
 
-        System.out.println(CollectionUtils.isNotEmpty(arr));
-        System.out.println(CollectionUtils.isNotEmpty(arr2));
-        System.out.println(CollectionUtils.isNotEmpty(arr3));
-
-
+        System.out.println(Character.getNumericValue('7'));
 
     }
+
+//    private static int romanToInt(String s) {
+//        //corner cases: IV=4, IX=9, XL=40, XD=90, CD=400, CM=900
+//        Map<Character, Integer> map = Map.of('I', 1, 'V', 5, 'X', 10, 'L', 50, 'C', 100, 'D', 500, 'M', 1000);
+//
+//        int result = 0;
+//        int i = 0;
+//        while (i < s.length()) {
+//            char current = s.charAt(i);
+//
+//            if (current == 'M') {
+//                result += map.get(current);
+//                i++;
+//                continue;
+//            }
+//
+//            if (i + 1 < s.length()) {
+//                char next = s.charAt(i + 1);
+//
+//                if (current == 'C') {
+//                    if (next == 'D') {
+//                        result += 400;
+//                        i += 2;
+//                    } else if (next == 'M') {
+//                        result += 900;
+//                        i += 2;
+//                    } else {
+//                        result += 100;
+//                        i++;
+//                    }
+//                } else if (current == 'X') {
+//                    if (next == 'L') {
+//                        result += 40;
+//                        i += 2;
+//                    } else if (next == 'D') {
+//                        result += 90;
+//                        i += 2;
+//                    } else {
+//                        result += 10;
+//                        i++;
+//                    }
+//                } else if (current == 'I') {
+//                    if (next == 'V') {
+//                        result += 4;
+//                        i += 2;
+//                    } else if (next == 'X') {
+//                        result += 9;
+//                        i += 2;
+//                    } else {
+//                        result += 1;
+//                        i++;
+//                    }
+//                }
+//            } else {
+//                result += map.get(current);
+//                i++;
+//            }
+//        }
+//        return result;
+//    }
+//
+//    private String longestCommonPrefix(String[] strs) {
+//        HashMap<String, Integer> duplicates = new HashMap<>();
+//
+//        for(int i = 0; i<strs.length; i++) {
+//            for(int j = i+1; j<strs.length; j++) {
+//                String prefix = commonFullPrefix(strs[i], strs[j]);
+//
+//                if(prefix.length()>0){
+//                    for(int k=1; k<=prefix.length(); k++) {
+//                        if (duplicates.containsKey(prefix.substring(0, k))) {
+//                            int repeats = duplicates.get(prefix);
+//                            duplicates.put(prefix.substring(0, k), repeats+1);
+//                        } else {
+//                            duplicates.put(prefix, 2);
+//                        }
+//                    }
+//                }
+//
+//            }
+//        }
+//
+//        String result = "";
+//        int maxRepeats = 0;
+//        duplicates.forEach((key, value) ->{
+//            if(value>maxRepeats){
+//                maxRepeats = value;
+//                result = key;
+//            }
+//        });
+//        return result;
+//    }
+
+//    private String commonFullPrefix(String a, String b) {
+//        String prefix = "";
+//        for(int i=0; i<a.length() || i<b.length(); i++){
+//            if(a.charAt(i) == b.charAt(i)){
+//                prefix+=a.charAt(i);
+//            } else{
+//                break;
+//            }
+//        }
+//        return prefix;
+//    }
 
     //arr = [1,2,3,4,5,6,7,8,9,10] sum = 8
-    private static boolean hasPairWithSumForSortedArray(int[] arr, int sum) {
-        int min = 0;
-        int max = arr.length - 1;
-        while (min < max) {
-            int s = arr[min] + arr[max];
-            if (s == sum) {
-                return true;
-            } else if (s < sum) {
-                min++;
-            } else {
-                max--;
-            }
-        }
-        return false;
-    }
+//    private static boolean hasPairWithSumForSortedArray(int[] arr, int sum) {
+//        int min = 0;
+//        int max = arr.length - 1;
+//        while (min < max) {
+//            int s = arr[min] + arr[max];
+//            if (s == sum) {
+//                return true;
+//            } else if (s < sum) {
+//                min++;
+//            } else {
+//                max--;
+//            }
+//        }
+//        return false;
+//    }
 
     // arr = [5,1,4,4,2,8,6,4,7,5,6,6,3,2,9] sum = 8
-    private static boolean hasPairWithSumForUnsortedArray(int[] arr, int sum) {
-        Set<Integer> oldValues = new HashSet<>();
-        for (int value : arr) {
-            if (oldValues.contains(sum - value)) {
-                return true;
-            } else {
-                oldValues.add(value);
-            }
-        }
-        return false;
-    }
+//    private static boolean hasPairWithSumForUnsortedArray(int[] arr, int sum) {
+//        Set<Integer> oldValues = new HashSet<>();
+//        for (int value : arr) {
+//            if (oldValues.contains(sum - value)) {
+//                return true;
+//            } else {
+//                oldValues.add(value);
+//            }
+//        }
+//        return false;
+//    }
 }
 
